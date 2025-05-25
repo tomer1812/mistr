@@ -19,58 +19,70 @@ The procedure requires the "min_observed_leaf" parameter, which sets the minimum
 
 1. Create a new environment with both Python and R. For example, when using anaconda, type:
 ```bash
-conda create -n mistr-env -c conda-forge python=3.10 r-base=4.2.3
+conda create -n ENV-NAME -c conda-forge python=3.10 r-base=4.2.3
 ```
 
 2. Activate the new environment. For example, when using anaconda, type:
 ```
-conda activate mistr-env
+conda activate ENV-NAME
 ```
 
-3. clone mistr repository:
+3. Install xcode
+```bash
+xcode-select --install
+```
+
+4. clone mistr repository:
 
 ```
 git clone https://github.com/tomer1812/mistr.git
 ```
 
-4. Install Python dependencies. In mistr project directory, type:
-```bash
-pip install -r requirements.txt
-```
-
-5. Install R dependencies. In mistr project directory, type:
-```
-Rscript requirements.R
-```
-
-6. Clone the custom version of scikit-survival:
+5. Clone the custom version of scikit-survival:
 ```
 git clone https://github.com/tomer1812/scikit-survival.git
 ```
 
-7. <u> Install the custom version of scikit-survival. </u>
-
-In local scikit-survival dir type: 
-```bash
-python setup.py build_ext --inplace
-
-pip install -e . --verbose --no-build-isolation --config-settings editable-verbose=true
-
-pip uninstall scikit-learn
-```
-
-8. Clone the custom version of scikit-survival:
+6. Clone the custom version of scikit-learn:
 ```bash
 git clone https://github.com/tomer1812/scikit-learn.git
 ```
 
-9. <u> Install the custom version of scikit-learn. </u>
-
-In local scikit-learn dir type: 
+7. Install dependencies:
 ```bash
+pip install ecos joblib numexpr numpy osqp pandas scipy ninja scikit-learn packaging Cython lifelines tableone matplotlib meson-python 
+```
+
+8. <u> Install the custom version of scikit-survival. </u>
+
+In local scikit-survival dir type: 
+```bash
+git submodule update --init
+
 python setup.py build_ext --inplace
 
 pip install -e . --verbose --no-build-isolation --config-settings editable-verbose=true
+```
+
+9. <u> Make sure scikit-survival did not install the external scikit-learn. </u>
+
+In local scikit-learn dir type: 
+```bash
+pip uninstall scikit-learn
+
+python setup.py build_ext --inplace
+
+pip install -e . --verbose --no-build-isolation --config-settings editable-verbose=true
+```
+
+10. Install Python dependencies. In mistr project directory, type:
+```bash
+pip install -r requirements.txt
+```
+
+11. Install R dependencies. In mistr project directory, type:
+```
+Rscript requirements.R
 ```
 
 ## Running Examples Using Command Line

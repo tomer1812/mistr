@@ -8,7 +8,7 @@ n_htes = 200
 datatype <- "type8"
 
 
-base_dir = "./example_data/"
+base_dir = "example_data/"
 train_filename = ""
 test_filename = ""
 
@@ -33,7 +33,7 @@ for (col in 1:n_htes) {
 X.train <- train_df[, paste0("X.", 1:p)]
 W.train <- train_df$W
 
-X.test <- full_test_df[, paste0("X.", 1:p)]
+X.test <- test_df[, paste0("X.", 1:p)]
 
 for (i in 1:n_htes) {
   if (i %% 50 == 0) {
@@ -47,18 +47,18 @@ for (i in 1:n_htes) {
   Y.train <- train_df[[paste0("Ti", i-1)]]
   c.forest <- causal_forest(X.train, Y.train, W.train, ci.group.size = 8, min.node.size = 25)
   c.pred <- predict(c.forest, X.test, estimate.variance = TRUE)
-  full_test_df[[paste0("HTE_", i-1)]] <- c.pred$predictions
-  full_test_df[[paste0("VAR_HTE_", i-1)]] <- c.pred$variance.estimates
+  test_df[[paste0("HTE_", i-1)]] <- c.pred$predictions
+  test_df[[paste0("VAR_HTE_", i-1)]] <- c.pred$variance.estimates
 }
 
-full_test_df[["MEAN_HTE"]] <- rowMeans(full_test_df[, paste0("HTE_", 0:(n_htes-1))])
-full_test_df[["MEAN_VAR_HTE"]] <- rowMeans(full_test_df[, paste0("VAR_HTE_", 0:(n_htes-1))])
+test_df[["MEAN_HTE"]] <- rowMeans(test_df[, paste0("HTE_", 0:(n_htes-1))])
+test_df[["MEAN_VAR_HTE"]] <- rowMeans(test_df[, paste0("VAR_HTE_", 0:(n_htes-1))])
 
-full_test_df[["IMPUTATION_VAR_HTE"]] <- apply(full_test_df[, paste0("HTE_", 0:(n_htes-1))], 1, function(x) {
+test_df[["IMPUTATION_VAR_HTE"]] <- apply(test_df[, paste0("HTE_", 0:(n_htes-1))], 1, function(x) {
   mean_x <- mean(x)  
   sum((x - mean_x)^2) / (length(x) - 1)  
 })
 
-full_test_df$TOTAL_VAR_MISTR <- full_test_df$MEAN_VAR_HTE + (1 + 1 / n_htes) * full_test_df$IMPUTATION_VAR_HTE
+test_df$TOTAL_VAR_MISTR <- test_df$MEAN_VAR_HTE + (1 + 1 / n_htes) * test_df$IMPUTATION_VAR_HTE
 
-write.csv(full_test_df, paste0(base_dir, "output/", datatype, "/n_", n_patients, "_seed_", seed, "_test_with_htes.csv"))
+write.csv(test_df, paste0(base_dir, "output/", datatype, "/n_", n_patients, "_seed_", seed, "_test_with_htes.csv"))

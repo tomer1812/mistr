@@ -73,7 +73,12 @@ n.mc = 20000
 datatype = 8
 dgp = paste0("type", datatype)
 print(dgp)
-output_dir = paste0("./example_data/data/", dgp)
+base_dir = "example_data/data/"
+output_dir = paste0(base_dir, dgp)
+
+if (!dir.exists(base_dir)) {
+  dir.create(base_dir)
+}
 
 if (!dir.exists(output_dir)) {
   dir.create(output_dir)
@@ -100,6 +105,7 @@ n = 5000
 n_test = 5000
 p = 3
 dgp = paste0("type", datatype)
+output_dir = paste0(base_dir, dgp)
 print(dgp)
 
 if (!dir.exists(output_dir)) {

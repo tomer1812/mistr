@@ -1,15 +1,7 @@
-import matplotlib
-
-from simulations.constants import Tmax_dict, p_dict
-
-matplotlib.use('agg')
-from src.qrist import QRIST
-#from src.plots_and_tables import create_simple1_tableone
+from qrist import QRIST
 import pandas as pd
 import warnings
 warnings.filterwarnings("ignore")
-from time import time
-import logging
 import os
 import numpy as np
 
@@ -21,12 +13,15 @@ def example(datatype='type8', p=5, Tmax=7, seed=1):
     n_jobs = 3
     q_recursion_steps = 3
 
-    base_dir = "./example_data/"
+    base_dir = "example_data/"
 
     data_dir = os.path.join(base_dir, f"data")
     output_dir = os.path.join(base_dir, f"output/{datatype}")
 
     features = [f'X.{i}' for i in range(1, p + 1)]
+
+    if not os.path.exists(os.path.join(base_dir, "output")):
+        os.mkdir(os.path.join(base_dir, "output"))
 
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
