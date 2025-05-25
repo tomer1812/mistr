@@ -35,12 +35,12 @@ git clone https://github.com/tomer1812/mistr.git
 
 4. Install Python dependencies. In mistr project directory, type:
 ```bash
-run pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 5. Install R dependencies. In mistr project directory, type:
 ```
-run Rscript requirements.R
+Rscript requirements.R
 ```
 
 6. Clone the custom version of scikit-survival:
