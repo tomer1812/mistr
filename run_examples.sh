@@ -13,5 +13,3 @@ Rscript src/example_estimate_hte_mistr.R
 
 echo "Running src/example_estimate_hte_mistr-iv.R..."
 Rscript src/example_estimate_hte_mistr-iv.R
-
-echo "All examples completed successfully!"
