@@ -83,8 +83,6 @@ pip install -r requirements.txt
 11. Install R dependencies. In mistr project directory, type:
 ```bash
 Rscript requirements.R
-
-conda install -c conda-forge r-grf
 ```
 
 ## Running Examples Using Command Line
