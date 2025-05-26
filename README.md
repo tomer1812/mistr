@@ -19,7 +19,7 @@ The procedure requires the "min_observed_leaf" parameter, which sets the minimum
 
 1. Create a new environment with both Python and R. For example, when using anaconda, type:
 ```bash
-conda create -n ENV-NAME -c conda-forge python=3.10 r-base=4.2.3
+conda create -n ENV-NAME -c conda-forge python=3.10 r-base=4.4.3
 ```
 
 2. Activate the new environment. For example, when using anaconda, type:
