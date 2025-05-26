@@ -1,4 +1,1 @@
 matplotlib
-scipy==1.11.4
-pandas==2.1.4
-numpy==1.26.4
