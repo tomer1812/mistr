@@ -5,12 +5,14 @@ This repository contains the implementation of the procedure and the analyses pr
 **"Heterogeneous Treatment Effect in Time-to-Event Outcomes: Harnessing Censored Data with Recursively Imputed Trees"**  
 Tomer Meir, Uri Shalit, and Malka Gorfine, 42nd International Conference of Machine Learning (ICML) 2025.
 
+Set up the environment and execute run_examples.sh for quick end-to-end usage examples. See detailed instructions below.
+
 ## Repository Structure
 
 The repository is organized as follows:
 
 - `src/`: Contains implementations of the MISTR and MISTR-IV procedures
-- `simulations/`: Contains the code to replicate the simulation studies from the paper
+- `simulations/`: Contains the code of the simulation studies from the paper
 - `use_cases/`: Contains the code for the use case analyses presented in the paper
 
 ## Environment Setup
