@@ -93,3 +93,18 @@ After installing and activating the environment, navigate to the mistr project d
 ```bash
 bash run_examples.sh
 ```
+
+## Results
+
+After the `run_examples.sh` script completes successfully, examine the `example_data/output` directory.
+
+For each data type, there should be a file ending with `_test_with_htes.csv` or `_test_with_htes_iv.csv`.  
+This file includes the following key columns:
+
+- `X.i` with i=1, ..., 5: feature columns.
+- `W`: treatment assignment status.
+- `Y`: last observed time.
+- `D`: observed event indicator.
+- **`cate`**: the Monte Carlo approximation of the true heterogeneous treatment effect (HTE)
+- **`MEAN_HTE`**: the HTE estimates produced by MISTR
+- **`TOTAL_VAR_MISTR`** or **`TOTAL_VAR_MISTRIV`**: the estimated variance of the MISTR\MISTR-IV estimates, respectively.
