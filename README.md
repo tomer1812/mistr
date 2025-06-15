@@ -5,6 +5,10 @@ This repository contains the implementation of the procedure and the analyses pr
 **"Heterogeneous Treatment Effect in Time-to-Event Outcomes: Harnessing Censored Data with Recursively Imputed Trees"**  
 Tomer Meir, Uri Shalit, and Malka Gorfine, 42nd International Conference of Machine Learning (ICML) 2025.
 
+![MISTR](figure1.png)  
+Figure 1. Our goal is to estimate the heterogeneous treatment effect, defined as the expected difference in survival times (or their transformation) with and without treatment, conditional on a set of covariates. We propose a multiple-imputation-based estimator that effectively leverages censored observations, outperforms existing methods, and is applicable in settings with instrumental variable adjustment for unobserved confounders.
+
+<br><br>
 Set up the environment and execute run_examples.sh for quick end-to-end usage examples. See detailed instructions below.
 
 ## Repository Structure
